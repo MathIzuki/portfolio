@@ -1,101 +1,217 @@
+"use client";
+
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import Image from "next/image";
+import {
+  FaGithub,
+  FaLinkedin,
+  FaEnvelope,
+  FaHome,
+  FaUser,
+  FaBook,
+  FaBriefcase,
+  FaComment,
+  FaSun,
+  FaMoon,
+} from "react-icons/fa";
+import { PiMapPinFill } from "react-icons/pi";
+import Link from "next/link";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  // Par défaut, mode sombre activé (true = dark mode)
+  const [isDarkMode, setIsDarkMode] = useState(true);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+  // Synchronisation du mode sombre avec l'élément racine
+  useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [isDarkMode]);
+
+  const toggleTheme = () => setIsDarkMode(!isDarkMode);
+
+  // Suivi du curseur
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const handleMouseMove = (e: MouseEvent) => {
+    setMousePos({ x: e.clientX, y: e.clientY });
+  };
+  useEffect(() => {
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
+
+  // Animation pour "CARCENAC Mathis"
+  const containerVariants = {
+    initial: {},
+    animate: { transition: { staggerChildren: 0.8 } },
+  };
+  const textVariants = {
+    initial: { opacity: 0, y: -50, filter: "blur(10px)" },
+    animate: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 1 } },
+  };
+
+  return (
+    <div className="relative min-h-screen">
+      {/* Ombre colorée diluée en haut */}
+      <div
+        className="absolute top-0 left-1/2 transform -translate-x-1/2 pointer-events-none z-0"
+        style={{
+          width: "55%",
+          height: "50px",
+          background: isDarkMode
+            ? "rgba(138,43,226,0.05)"
+            : "rgba(255,160,0,0.30)",
+          filter: "blur(80px)",
+        }}
+      />
+
+      {/* WRAPPER pour centrer le grid */}
+      <div className="grid-wrapper">
+        <motion.div
+          className="grid-container"
+          style={{
+            // Le grid suit légèrement le curseur (facteur 0.05)
+            x: mousePos.x * 0.05,
+            y: mousePos.y * 0.05,
+          }}
+        >
+          <div className="overlay-grid"></div>
+          <div className="blue-gradient"></div>
+          <div className="grid-overlay"></div>
+        </motion.div>
+      </div>
+
+      {/* Overlay pour faire disparaître le grid vers le bas */}
+      <div className="grid-fade" />
+
+      {/* CONTENU PRINCIPAL */}
+      <div className="relative z-10 flex flex-col min-h-screen">
+        {/* NAVIGATION */}
+        <nav
+          className={`fixed top-5 left-1/2 transform -translate-x-1/2 px-8 py-4 rounded-full flex items-center gap-6 shadow-lg backdrop-blur-sm ${
+            isDarkMode ? "bg-neutral-800/60 transition" : "bg-gray-200/40 transition"
+          }`}
+        >
+          <div className="flex items-center gap-6">
+            <FaHome
+              className={`text-xl cursor-pointer transition ${
+                isDarkMode ? "hover:text-purple-500" : "hover:text-yellow-500"
+              }`}
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            <FaUser
+              className={`text-xl cursor-pointer transition ${
+                isDarkMode ? "hover:text-purple-500" : "hover:text-yellow-500"
+              }`}
+            />
+            <FaBook
+              className={`text-xl cursor-pointer transition ${
+                isDarkMode ? "hover:text-purple-500" : "hover:text-yellow-500"
+              }`}
+            />
+            <FaBriefcase
+              className={`text-xl cursor-pointer transition ${
+                isDarkMode ? "hover:text-purple-500" : "hover:text-yellow-500"
+              }`}
+            />
+            <FaComment
+              className={`text-xl cursor-pointer transition ${
+                isDarkMode ? "hover:text-purple-500" : "hover:text-yellow-500"
+              }`}
+            />
+          </div>
+          {/* Séparateur vertical */}
+          <div className="h-6 border-l border-gray-500/35 mx-2" />
+          <button
+            onClick={toggleTheme}
+            className={`text-xl p-2 rounded-full transition-colors duration-500 hover:bg-gray-300/10 ${
+              !isDarkMode ? "hover:bg-neutral-900/10" : ""
+            }`}
           >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+            {isDarkMode ? <FaSun /> : <FaMoon />}
+          </button>
+        </nav>
+
+        {/* CONTENU - centré verticalement */}
+        <main className="flex flex-1 items-center justify-center">
+          <section className="container mx-auto px-4 flex flex-col sm:flex-row items-center gap-8 py-20">
+            {/* COLONNE TEXTE */}
+            <div className="flex-1 flex flex-col items-center sm:items-start">
+              <motion.div
+                className="flex flex-wrap text-5xl sm:text-6xl font-extrabold text-center sm:text-left transition"
+                variants={containerVariants}
+                initial="initial"
+                animate="animate"
+              >
+                <motion.span variants={textVariants} className="mr-4">
+                  CARCENAC
+                </motion.span>
+                <motion.span variants={textVariants}>Mathis</motion.span>
+              </motion.div>
+
+              {/* "Étudiant en Informatique" avec highlight */}
+              <div className="relative mt-4">
+                <h2 className="font-semibold text-2xl sm:text-4xl relative z-10">
+                  Étudiant en Informatique
+                </h2>
+                <motion.div
+                  initial={{ width: 0 }}
+                  animate={{ width: "100%" }}
+                  transition={{ duration: 1.5 }}
+                  className={`absolute -bottom-1 left-[5%] h-5 transition ${
+                    isDarkMode ? "bg-violet-500" : "bg-yellow-500"
+                  } z-0`}
+                />
+              </div>
+
+              {/* LOCALISATION */}
+              <div className="flex items-center gap-2 mt-6 text-lg sm:text-xl transition">
+                <PiMapPinFill />
+                <p>France, Toulouse | Albi</p>
+              </div>
+
+              {/* RÉSEAUX SOCIAUX */}
+              <div className="flex gap-4 mt-6 text-2xl">
+                <Link href="https://linkedin.com" target="_blank">
+                  <FaLinkedin
+                    className={`transition-colors duration-500 ${
+                      isDarkMode ? "hover:text-purple-500" : "hover:text-yellow-500"
+                    }`}
+                  />
+                </Link>
+                <Link href="https://github.com" target="_blank">
+                  <FaGithub
+                    className={`transition-colors duration-500 ${
+                      isDarkMode ? "hover:text-purple-500" : "hover:text-yellow-500"
+                    }`}
+                  />
+                </Link>
+                <Link href="#contact">
+                  <FaEnvelope
+                    className={`transition-colors duration-500 ${
+                      isDarkMode ? "hover:text-purple-500" : "hover:text-yellow-500"
+                    }`}
+                  />
+                </Link>
+              </div>
+            </div>
+
+            {/* COLONNE IMAGE */}
+            <div className="flex-1 flex justify-center sm:justify-end">
+              <div className="relative w-48 h-48 rounded-full overflow-hidden">
+                <Image
+                  src="/images/photo.png"
+                  alt="Photo de profil"
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
     </div>
   );
 }

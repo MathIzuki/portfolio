@@ -2,20 +2,89 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Transition globale pour le thème */
+html {
+  transition: background-color 0.5s, color 0.5s;
+}
+
+/* --- Variables de couleurs --- */
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --grid-color: #aaacb3; /* Couleur du grid en mode clair */
+  --blue-gradient-color: rgba(41, 109, 255, 0.6);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --grid-color: #55555571; /* Couleur du grid en mode sombre */
+  --blue-gradient-color: rgba(255, 41, 109, 0.6);
 }
 
 body {
-  color: var(--foreground);
   background: var(--background);
+  color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+/* WRAPPER qui centre le grid */
+.grid-wrapper {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 100vh;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* === GRID BACKGROUND === */
+.grid-container {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  /* Le grid est centré par le wrapper et disparaît vers le bas */
+  mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 80%);
+  -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 80%);
+}
+
+.overlay-grid,
+.blue-gradient,
+.grid-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Halo bleu (ou variante en fonction du thème) */
+.blue-gradient {
+  box-shadow: 0 0 400px 40px var(--blue-gradient-color);
+  z-index: -1;
+}
+
+/* La grille (les lignes) */
+.grid-overlay {
+  background-size: 45px 45px;
+  background-image: 
+    linear-gradient(var(--grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+  background-position: 0 0, 40px 40px;
+  opacity: 0.2;
+}
+
+/* Overlay pour faire disparaître le grid vers le bas */
+.grid-fade {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 30vh;
+  background: linear-gradient(to bottom, transparent, var(--background));
+  pointer-events: none;
+  z-index: 1;
 }
