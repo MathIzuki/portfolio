@@ -2,11 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Transition globale pour le thème */
-html {
-  transition: background-color 0.5s, color 0.5s;
-}
-
 /* --- Variables de couleurs --- */
 :root {
   --background: #ffffff;
