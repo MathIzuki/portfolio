@@ -2,19 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+html{
+  scroll-behavior: smooth;
+}
 /* --- Variables de couleurs --- */
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --grid-color: #aaacb3; /* Couleur du grid en mode clair */
+  --grid-color: #aaacb3e5; /* Couleur du grid en mode clair */
   --blue-gradient-color: rgba(41, 109, 255, 0.6);
+  --blob-outline-color: #171717; /* Couleur par défaut pour le mode clair */
 }
 
 .dark {
   --background: #0a0a0a;
   --foreground: #ededed;
-  --grid-color: #55555571; /* Couleur du grid en mode sombre */
+  --grid-color: #555555bb; /* Couleur du grid en mode sombre */
   --blue-gradient-color: rgba(255, 41, 109, 0.6);
+  --blob-outline-color: white;
 }
 
 body {
@@ -42,8 +47,8 @@ body {
   height: 100%;
   transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
   /* Le grid est centré par le wrapper et disparaît vers le bas */
-  mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 80%);
-  -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 80%);
+  mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0) 80%);
+  -webkit-mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0) 80%);
 }
 
 .overlay-grid,
@@ -74,7 +79,6 @@ body {
 
 /* Overlay pour faire disparaître le grid vers le bas */
 .grid-fade {
-  position: fixed;
   bottom: 0;
   left: 0;
   width: 100vw;
@@ -83,3 +87,46 @@ body {
   pointer-events: none;
   z-index: 1;
 }
+
+/* BLOB PRINCIPAL */
+.blob-anim {
+  position: relative;
+  border-radius: 40% 60% 70% 30% / 30% 40% 60% 70%;
+  animation: blob 6s ease-in-out infinite alternate;
+}
+
+@keyframes blob {
+  0% {
+    border-radius: 40% 60% 65% 30% / 30% 40% 55% 70%;
+  }
+  50% {
+    border-radius: 35% 65% 60% 35% / 55% 35% 50% 65%;
+  }
+  100% {
+    border-radius: 40% 60% 65% 30% / 30% 40% 55% 70%;
+  }
+}
+
+/* BLOB OUTLINE DÉSYNCHRONISÉ */
+.blob-outline {
+  width: 90%;
+  height: 90%;
+  transform: scale(1.25);
+  border: 2.5px solid var(--blob-outline-color);
+  border-radius: inherit;
+  animation: blobOutline 7s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+@keyframes blobOutline {
+  0% {
+    border-radius: 45% 55% 65% 35% / 35% 45% 65% 55%;
+  }
+  50% {
+    border-radius: 35% 65% 45% 55% / 55% 35% 45% 65%;
+  }
+  100% {
+    border-radius: 45% 55% 65% 35% / 35% 45% 65% 55%;
+  }
+}
+
