@@ -111,7 +111,8 @@ const timelineEvents = [
     date: "2019 - 2022",
     title: "Formation Baccalauréat STI2D (option SIN)",
     location: "Lycée Jean Jaurès, Carmaux",
-    description: `Baccalauréat STI2D obtenu avec mention bien.`,
+    description: `Baccalauréat STI2D obtenu avec mention bien.
+    Le STI2D option SIN se concentre sur le numérique, la programmation et les systèmes embarqués. Il permet d’acquérir des compétences en informatique, réseaux et électronique, ouvrant la voie à des études en ingénierie, cybersécurité et développement.`,
     logo: "/images/sti2d_logo.png",
   },
   {
@@ -348,7 +349,7 @@ const outilsSkills = [
   {
     icon: <SiAndroidstudio className="text-green-600" />,
     name: "Android Studio",
-    level: "Intgermédiaire",
+    level: "Intermédiaire",
   },
 ];
 
@@ -451,10 +452,10 @@ const outilsSkills = [
               <p>France, Toulouse | Albi</p>
             </div>
             <div className="flex gap-4 mt-6 text-2xl">
-              <Link href="https://linkedin.com" target="_blank">
+              <Link href="https://www.linkedin.com/in/mathis-carcenac-846414252/" target="_blank">
                 <FaLinkedin className={`transition-colors duration-500 ${isDarkMode ? "hover:text-purple-500" : "hover:text-yellow-500"}`} />
               </Link>
-              <Link href="https://github.com" target="_blank">
+              <Link href="https://github.com/mathizuki" target="_blank">
                 <FaGithub className={`transition-colors duration-500 ${isDarkMode ? "hover:text-purple-500" : "hover:text-yellow-500"}`} />
               </Link>
               <Link href="#contact">
@@ -683,7 +684,23 @@ const outilsSkills = [
       </section>
 
       <section id="timeline" className="my-32 px-4 w-full relative">
+        
+  <div className="container mx-auto relative" style={{ height: "300px" }}>
+    
+    {/* Titre principal */}
+    <div className="relative inline-block mb-12">
+      <h2 className="font-semibold text-4xl sm:text-4xl relative">
+        Expériences
+      </h2>
       <motion.div
+        initial={{ width: 0 }}
+        whileInView={{ width: "100%" }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 1.5, ease: [0.77, 0, 0.175, 1] }}
+        className="absolute bottom-0 left-6 h-4 transition-colors duration-500 bg-yellow-500 dark:bg-violet-500 -z-10"
+      />
+    </div>
+    <motion.div
           className="absolute pointer-events-none"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 0.2 }}
@@ -700,134 +717,100 @@ const outilsSkills = [
             WebkitMaskImage: "radial-gradient(circle, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%)",
           }}
         />
-      <div className="container mx-auto">
-        <div className="relative mb-20">
-          <div className="relative inline-block mb-12">
-            <h2 className="font-semibold text-4xl sm:text-4xl relative z-10" >
-              Expériences
-            </h2>
-            <motion.div
-              initial={{ width: 0 }}
-              whileInView={{ width: "100%" }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 1.5, ease: [0.77, 0, 0.175, 1] }}
-              className="absolute bottom-0 left-6 h-4 transition-colors duration-500 z-0 bg-yellow-500 dark:bg-violet-500"
-            />
-          </div>
-        </div>
-        {/* Trait horizontal animé (se déclenche en vue) */}
-        <motion.div 
-          initial={{ width: 0 }}
-          whileInView={{ width: "100%" }}
-          viewport={{ once: true }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
-          className="h-px bg-gray-400 mx-auto relative"
-        >
-          {/* Container pour les points */}
-          <motion.div
-            className="absolute inset-0 flex justify-between items-center"
-            variants={{
-              animate: {
-                transition: {
-                  staggerChildren: 0.3,
-                  delayChildren: 1.5,
-                },
-              },
-            }}
-            initial="initial"
-            animate="animate"
-          >
-            {sortedEvents.map((event) => (
-              <motion.div 
-                key={event.id} 
-                className="relative cursor-pointer"
-                variants={{
-                  initial: { opacity: 0, x: -20 },
-                  animate: { opacity: 1, x: 0 },
-                }}
-                viewport={{ once: true }}
-              >
-                {/* Groupe point et tooltip */}
-                <motion.div 
-                  className="relative"
-                  whileHover="hover"
-                  initial="rest"
-                  animate="rest"
-                  viewport={{ once: true }}
-                >
-                  {/* Point contenant l'icône */}
-                  <motion.div 
-                    variants={{
-                      rest: { scale: 1 },
-                      hover: { scale: 1.1 }
-                    }}
-                    transition={{ duration: 0.3, type: "spring", stiffness: 300, damping: 20 }}
-                    className={`w-8 h-8 flex items-center justify-center rounded-full border-2 ${
-                      isDarkMode ? "bg-white border-white" : "bg-black border-black"
-                    }`}
-                  >
-                    {getIconForEvent(event)}
-                  </motion.div>
-                  {/* Tooltip qui apparaît au survol */}
-                  <motion.div 
-                    variants={{ rest: { opacity: 0, scale: 0.8 }, hover: { opacity: 1, scale: 1 } }}
-                    transition={{ duration: 0.2 }}
-                    className="absolute bottom-full mb-2 left-[-110px] transform -translate-x-1/2 pointer-events-none z-10"
-                  >
-                    <div className="p-3 bg-gray-100 dark:bg-neutral-900 rounded-lg shadow-lg text-xs w-64">
-                      {event.logo && (
-                        <div className="m-auto mb-2">
-                          <Image
-                            src={event.logo}
-                            alt={`${event.title} logo`}
-                            width={200}
-                            height={200}
-                            className="object-contain m-auto"
-                          />
-                        </div>
-                      )}
-                      <h3 className="font-bold mb-1 text-center">{event.title}</h3>
-                      <div className="flex items-center justify-center mb-1">
-                        <PiMapPinFill className="mr-1" />
-                        <p className="text-xs">{event.location}</p>
-                      </div>
-                      <p className="whitespace-pre-line text-xs">{event.description}</p>
-                      <br />
-                      <p className="mt-1 text-xs text-gray-500 text-center">{event.date}</p>
-                    </div>
-                  </motion.div>
-                </motion.div>
-              </motion.div>
-            ))}
-          </motion.div>
-          {/* Flèche à l'extrémité droite */}
-        </motion.div>
-      </div>
-    </section>
-    {/* SECTION CV */}
-    {/* SECTION CV */}
-<section id="cv" className="my-20 flex flex-col items-center">
-  <p className="text-lg mb-4 text-center">
-    Pour en savoir plus, consultez mon CV complet.
-  </p>
-  <motion.button
-    className={`relative px-8 py-4 rounded-xl shadow- font-bold transition-colors duration-300 ${
-      isDarkMode
-        ? "bg-violet-600 text-white hover:bg-violet-700"
-        : "bg-yellow-500 text-black hover:bg-yellow-600"
-    }`}
-    onClick={() => window.open("/cv.pdf", "_blank")}
-  >
-    {/* Effet de pulsation interne */}
-    <motion.div
-      className="absolute inset-0 rounded-full"
-      initial={{ scale: 1, opacity: 0.7 }}
-      animate={{ scale: [1, 1.2, 1], opacity: [0.7, 0.3, 0.7] }}
-      transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+    {/* Trait horizontal placé au centre du conteneur */}
+    <motion.div 
+      className="absolute w-full bg-gray-400"
+      style={{ height: "1px", top: "80%", transform: "translateY(-50%)" }}
+      initial={{ width: 0 }}
+      whileInView={{ width: "100%" }}
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{ duration: 1, ease: "easeOut" }}
     />
-    <span className="relative z-10">Voir mon CV</span>
-  </motion.button>
+
+    {/* Container pour les points, positionné au centre du trait */}
+    <motion.div 
+      className="absolute left-0 right-0 flex justify-between items-center"
+      style={{ top: "80%", transform: "translateY(-50%)" }}
+      variants={{
+        hidden: {},
+        visible: {
+          transition: {
+            staggerChildren: 0.3,
+            delayChildren: 1,
+          },
+        },
+      }}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+    >
+      {sortedEvents.map((event) => (
+        <motion.div 
+          key={event.id} 
+          className="relative cursor-pointer"
+          variants={{
+            hidden: { opacity: 0, x: -20 },
+            visible: { opacity: 1, x: 0 },
+          }}
+          transition={{ duration: 0.5 }}
+        >
+          {/* Groupe point et tooltip */}
+          <motion.div 
+            className="relative"
+            whileHover="hover"
+            initial="rest"
+            animate="rest"
+            viewport={{ once: true }}
+          >
+            {/* Point contenant l'icône */}
+            <motion.div 
+              variants={{
+                rest: { scale: 1 },
+                hover: { scale: 1.1 }
+              }}
+              transition={{ duration: 0.3, type: "spring", stiffness: 300, damping: 20 }}
+              className={`w-8 h-8 flex items-center justify-center rounded-full border-2 ${
+                isDarkMode ? "bg-white border-white" : "bg-black border-black"
+              }`}
+            >
+              {getIconForEvent(event)}
+            </motion.div>
+            {/* Tooltip */}
+            <motion.div 
+              variants={{ rest: { opacity: 0, scale: 0.8 }, hover: { opacity: 1, scale: 1 } }}
+              transition={{ duration: 0.2 }}
+              className="absolute bottom-full mb-2 left-[-110px] transform -translate-x-1/2 pointer-events-none z-40"
+              style={{ zIndex: 9999 }}
+            >
+              <div className="p-3 bg-gray-100 dark:bg-neutral-900 rounded-lg shadow-lg text-xs w-64">
+                {event.logo && (
+                  <div className="m-auto mb-2">
+                    <Image
+                      src={event.logo}
+                      alt={`${event.title} logo`}
+                      width={200}
+                      height={200}
+                      className="object-contain m-auto"
+                    />
+                  </div>
+                )}
+                <h3 className="font-bold mb-1 text-center">{event.title}</h3>
+                <div className="flex items-center justify-center mb-1">
+                  <PiMapPinFill className="mr-1" />
+                  <p className="text-xs">{event.location}</p>
+                </div>
+                <p className="whitespace-pre-line text-xs">{event.description}</p>
+                <br />
+                <p className="mt-1 text-xs text-gray-500 text-center">{event.date}</p>
+              </div>
+            </motion.div>
+          </motion.div>
+        </motion.div>
+      ))}
+    </motion.div>
+  </div>
 </section>
+
 <section id="competences" className="my-32 px-4 w-full relative py-4">
 <div className="absolute inset-0 pointer-events-none opacity-10 dark:opacity-[0.03]"
     style={{
@@ -1078,6 +1061,9 @@ const outilsSkills = [
           <div className="flex space-x-4 mb-4">
             <div className="flex flex-col items-center">
               <SiKotlin className="text-purple-500 text-2xl" />
+            </div>
+            <div className="flex flex-col items-center">
+              <FaJava className="text-red-500 text-3xl" />
             </div>
           </div>
           <p className="text-gray-700 dark:text-gray-300 mb-6 text-sm text-justify">
