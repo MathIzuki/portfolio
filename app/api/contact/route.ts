@@ -6,8 +6,8 @@ const transporter = nodemailer.createTransport({
   port: Number(process.env.SMTP_PORT) || 465,
   secure: true, // Port 465 avec SSL/TLS
   auth: {
-    user: process.env.SMTP_USER || "contact@mathiscarcenac.fr",
-    pass: process.env.SMTP_PASS || "Mathis81400!", // Assurez-vous que ce mot de passe est exact, sans quotes
+    user: process.env.SMTP_USER || "youwillnotsee",
+    pass: process.env.SMTP_PASS || "aaaaa", // Assurez-vous que ce mot de passe est exact, sans quotes
   },
 });
 
