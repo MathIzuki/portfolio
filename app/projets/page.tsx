@@ -3,6 +3,7 @@
 import React, { useState, useEffect, JSX } from "react";
 import Link from "next/link";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import Image from "next/image";
 import {
   FaArrowLeft,
   FaReact,
@@ -149,11 +150,12 @@ const ProjectOverlay = ({
           {project.description}
         </p>
         <div className="relative h-48 rounded-xl overflow-hidden">
-          <img
-            src={project.image}
-            alt={project.title}
-            className="absolute inset-0 w-full h-full object-cover"
-          />
+        <Image
+          src={project.image}
+          alt={project.title}
+          layout="fill"
+          objectFit="cover"
+        />
         </div>
       </div>
     </motion.div>

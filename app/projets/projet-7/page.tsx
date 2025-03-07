@@ -265,7 +265,7 @@ export default function ValresPage() {
                 </h2>
                 <p className={`${isDarkMode ? "text-gray-300" : "text-gray-700"} leading-relaxed text-justify space-y-4`}>
                 Valres est une plateforme web de gestion des réservations de salles, développée dans le cadre d’un projet en binôme lors de ma deuxième année de BTS SIO au Lycée Ozenne. 
-                  L'objectif était de moderniser un système existant en intégrant une solution plus intuitive, sécurisée et adaptée aux besoins actuels. 
+                  L&apos;objectif était de moderniser un système existant en intégrant une solution plus intuitive, sécurisée et adaptée aux besoins actuels. 
                   Grâce à une architecture MVC et un développement en PHP, JavaScript, HTML et CSS, le site permet une gestion fluide des réservations, des accès utilisateurs et de la facturation. 
                   Chaque utilisateur possède un rôle spécifique (Administrateur, Responsable, Secrétaire, Utilisateur) qui définit ses permissions et actions disponibles sur la plateforme.
 

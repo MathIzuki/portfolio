@@ -261,10 +261,11 @@ export default function EpicurioPage() {
                   Contexte du projet
                 </h2>
                 <p className={`${isDarkMode ? "text-gray-300" : "text-gray-700"} leading-relaxed text-justify space-y-4`}>
-                  L’application mobile Epicurio est un projet individuel réalisé en seconde année de BTS SIO, conçu pour offrir une expérience fluide et intuitive aux amateurs de cuisine en quête d’inspiration.
+                  L&apos;application mobile Epicurio est un projet individuel réalisé en seconde année de BTS SIO, conçu pour offrir une expérience fluide et intuitive aux amateurs de cuisine en quête d&apos;inspiration.
                   Développée avec Kotlin et Java via Android Studio, cette application permet aux utilisateurs de découvrir et consulter une vaste sélection de recettes grâce à un moteur de recherche performant.
-                  Que ce soit par nom, ingrédients, ou type de plat, Epicurio facilite la recherche et la découverte de nouvelles idées culinaires. Pour les indécis, une fonctionnalité aléatoire propose une recette au hasard, ajoutant une touche de spontanéité à l'expérience.
-                  Chaque recette est présentée avec des détails complets : ingrédients, instructions étape par étape, et suggestions d’accompagnement.
+                  Que ce soit par nom, ingrédients, ou type de plat, Epicurio facilite la recherche et la découverte de nouvelles idées culinaires. Pour les indécis, une fonctionnalité aléatoire propose une recette au hasard, ajoutant une touche de spontanéité à l                  Que ce soit par nom, ingrédients, ou type de plat, Epicurio facilite la recherche et la découverte de nouvelles idées culinaires. Pour les indécis, une fonctionnalité aléatoire propose une recette au hasard, ajoutant une touche de spontanéité à l&apos;expérience.
+                  expérience.
+                  Chaque recette est présentée avec des détails complets : ingrédients, instructions étape par étape, et suggestions d&apos;accompagnement.
                   Pensée pour être ergonomique et accessible, Epicurio offre une navigation fluide et optimisée, garantissant un affichage rapide et une expérience utilisateur agréable.
                 </p>
               </motion.div>

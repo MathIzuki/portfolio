@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
-import { FaChevronLeft, FaChevronRight, FaGithub, FaTimes } from "react-icons/fa";
+import { FaChevronLeft, FaChevronRight, FaTimes } from "react-icons/fa";
 import { GiPerspectiveDiceFive } from "react-icons/gi";
 import { CgWebsite } from "react-icons/cg";
 
@@ -262,7 +262,7 @@ export default function DelabonnePage() {
                 </h2>
                 <p className={`${isDarkMode ? "text-gray-300" : "text-gray-700"} leading-relaxed text-justify space-y-4`}>
                   Delabonne est un site web développé durant mon stage de première année de BTS SIO au sein de l’agence Captusite. 
-                  Ce projet visait à moderniser le site vitrine d'une brasserie artisanale, en mettant en avant ses produits et son engagement pour une production locale et bio. 
+                  Ce projet visait à moderniser le site vitrine d’une brasserie artisanale, en mettant en avant ses produits et son engagement pour une production locale et bio. 
                   Un designer a travaillé sur la nouvelle charte graphique, et mon rôle était d’adapter le site en fonction des nouvelles exigences du client, tout en garantissant une navigation fluide et esthétique.
                   Le projet a été développé sous WordPress, en intégrant des ajustements en CSS et jQuery pour optimiser l’interface et l’expérience utilisateur.
                 </p>
@@ -276,7 +276,7 @@ export default function DelabonnePage() {
                   <li>Respect strict du cahier des charges et de la charte graphique définie</li>
                   <li>Création d’une interface intuitive permettant au client de mettre en avant ses produits</li>
                   <li>Ajout de fonctionnalités pour modifier l’apparence du site directement depuis le back-office</li>
-                  <li>Optimisation des performances et de l'affichage des images</li>
+                  <li>Optimisation des performances et de l’affichage des images</li>
                 </ul>
               </motion.div>
             </div>

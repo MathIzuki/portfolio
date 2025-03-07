@@ -5,7 +5,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
 import { FaChevronLeft, FaChevronRight, FaGithub, FaTimes } from "react-icons/fa";
-import { IoIosDocument } from "react-icons/io";
 import { TbReportAnalytics } from "react-icons/tb";
 
 
@@ -48,7 +47,7 @@ const AnimatedBigLight = ({ isDarkMode }: { isDarkMode: boolean }) => {
 // Composant ImageSlider avec modal de zoom en fixed et centré
 const ImageSlider = ({ images }: { images: string[] }) => {
   const [current, setCurrent] = useState(0);
-  // selectedIndex détermine l'image affichée dans le modal
+  // selectedIndex détermine l’image affichée dans le modal
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
   const leftIndex = (current - 1 + images.length) % images.length;
@@ -251,7 +250,7 @@ export default function LetsbefriendsPage() {
                 : "text-yellow-500"
             }`}
           >
-            Let's Be Friends
+            Let’s Be Friends
           </h1>
 
           <div className="grid md:grid-cols-2 gap-8">
@@ -261,9 +260,9 @@ export default function LetsbefriendsPage() {
                   Contexte du projet
                 </h2>
                 <p className={`${isDarkMode ? "text-gray-300" : "text-gray-700"} leading-relaxed text-justify space-y-4`}>
-                  Let's Be Friends est un projet réalisé en collaboration avec des étudiants de BTS SAM dans le cadre de ma première année de BTS SIO au Lycée Ozenne. 
-                  L'objectif était de concevoir un site vitrine statique pour une entreprise fictive spécialisée dans la mise en relation d’individus partageant des centres d'intérêt communs.
-                  En mettant en avant un abonnement premium, l'entreprise propose diverses fonctionnalités exclusives telles que des forums de discussions, des jeux en ligne et des concours.
+                  Let’s Be Friends est un projet réalisé en collaboration avec des étudiants de BTS SAM dans le cadre de ma première année de BTS SIO au Lycée Ozenne. 
+                  L’objectif était de concevoir un site vitrine statique pour une entreprise fictive spécialisée dans la mise en relation d’individus partageant des centres d’intérêt communs.
+                  En mettant en avant un abonnement premium, l’entreprise propose diverses fonctionnalités exclusives telles que des forums de discussions, des jeux en ligne et des concours.
                   Ce projet nous a permis d’expérimenter le travail en équipe avec un client réel, en appliquant les principes de communication, d’organisation et de développement web.
                 </p>
               </motion.div>

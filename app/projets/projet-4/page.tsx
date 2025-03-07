@@ -4,9 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
-import { FaChevronLeft, FaChevronRight, FaGithub, FaTimes } from "react-icons/fa";
-import { IoIosDocument } from "react-icons/io";
-import { TbReportAnalytics } from "react-icons/tb";
+import { FaChevronLeft, FaChevronRight, FaTimes } from "react-icons/fa";
 
 
 // Composant MovingGrid avec masque CSS pour un fade sur les côtés
@@ -260,9 +258,9 @@ export default function ValresPage() {
                 </h2>
                 <p className={`${isDarkMode ? "text-gray-300" : "text-gray-700"} leading-relaxed text-justify space-y-4`}>
                   Ce projet a été réalisé lors de mon stage de 2ᵉ année de BTS SIO chez ABLink. 
-                  L'entreprise utilisait un site intranet développé il y a plusieurs années pour la gestion interne de ses clients, 
+                  L’entreprise utilisait un site intranet développé il y a plusieurs années pour la gestion interne de ses clients, 
                   incluant la création de factures, devis et ajout de nouveaux clients.
-                  Toutefois, les données clients étaient réparties entre deux bases de données distinctes : l'une sur l'intranet et l'autre dans un cloud externe. 
+                  Toutefois, les données clients étaient réparties entre deux bases de données distinctes : l’une sur l’intranet et l’autre dans un cloud externe. 
                   Mon rôle a été de centraliser ces informations afin d’améliorer leur intégrité et de fluidifier la synchronisation entre les deux systèmes.
                 </p>
               </motion.div>

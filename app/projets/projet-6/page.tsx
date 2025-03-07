@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
-import { FaChevronLeft, FaChevronRight, FaGithub, FaTimes } from "react-icons/fa";
+import { FaChevronLeft, FaChevronRight, FaTimes } from "react-icons/fa";
 import { CgWebsite } from "react-icons/cg";
 
 // Composant MovingGrid avec masque CSS pour un fade sur les côtés

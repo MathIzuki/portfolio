@@ -5,7 +5,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
 import { FaChevronLeft, FaChevronRight, FaGithub, FaTimes } from "react-icons/fa";
-import { IoIosDocument } from "react-icons/io";
 import { TbReportAnalytics } from "react-icons/tb";
 
 
